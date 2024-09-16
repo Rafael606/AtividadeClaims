@@ -12,7 +12,7 @@ app.use(express.json());
 // Mock user data
 const mockUser = {
   username: 'user',
-  password: 'password' // Note: In a real app, passwords should be hashed
+  password: 'password'
 };
 
 // Endpoint para login
@@ -22,8 +22,8 @@ app.post('/jwt/auth', (req, res) => {
   if (username === mockUser.username && password === mockUser.password) {
     const token = jwt.sign(
       { username },
-      process.env.JWT_SECRET, // Chave secreta para assinar o token
-      { expiresIn: '1h' } // Expiração do token
+      process.env.JWT_SECRET, 
+      { expiresIn: '1h' } 
     );
 
     const decoded = jwt.decode(token);
